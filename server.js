@@ -36,14 +36,14 @@ app.get("/app/users", (req, res) => {
 });
 
 // READ a single user (HTTP method GET) at endpoint /app/user/:id
-app.get("/app/users/:id", (req, res) => {
+app.get("/app/user/:id", (req, res) => {
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = ?").get(req.params.id);
-	console.log(req.params.id);
+	// stmt = {"id":1,"user":"admin","pass":"bdc87b9c894da5168059e00ebffb9077"}
 	res.status(200).json(stmt);
 });
 
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
-app.put("/app/update/users/:id", (req, res) => {
+app.put("/app/update/user/:id", (req, res) => {
 	const stmt = db.prepare("UPDATE userinfo SET user = ?, pass = ? WHERE id = ?");
 	const info = stmt.run(req.body.user, req.body.pass, req.params.id);
 	res.status(201).send("something changed!");
