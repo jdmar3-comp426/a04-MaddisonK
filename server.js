@@ -56,7 +56,7 @@ app.delete("/app/delete/user/:id", (req,res) => {
 	res.status(200).send("Deleted: " + info.changes);
 });
 
-Default response for any other request
+// Default response for any other request
 app.use(function(req, res){
 	res.json({"message": "Your API is working!"});
     res.status(404);
