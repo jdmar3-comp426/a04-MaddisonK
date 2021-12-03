@@ -25,8 +25,8 @@ app.get("/app/", (req, res, next) => {
 // CREATE a new user (HTTP method POST) at endpoint /app/new/
 app.post("/app/new/", (req, res)=>{
 	const stmt = db.prepare("INSERT INTO userinfo (user,pass) VALUES (?,?)").run(req.body.user, md5(req.body.pass));
-	res.status(201).json({"message":"1 record created: ID %ID% (201)".replace("%ID%", stmt.lastInsertRowid)});
-	//res.status(201).json({"message": "1 record created: ID " + stmt.lastInsertRowid + " (201)"});
+	//res.status(201).json({"message":"1 record created: ID %ID% (201)".replace("%ID%", stmt.lastInsertRowid)});
+	res.status(201).json({"message": "1 record created: ID " + stmt.lastInsertRowid + " (201)"});
 })
 
 // READ a list of all users (HTTP method GET) at endpoint /app/users/
